@@ -10,10 +10,7 @@
 
     function stateConfig($stateProvider) {
         $stateProvider.state('app', {
-            abstract: true,
-            views: {
-                
-            }
+            abstract: true
         });
     }
 })();
