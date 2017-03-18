@@ -3,6 +3,7 @@
 
     angular
         .module('iDiscoveryApp', [
-            'ui.router'
+            'ui.router',
+            'ngMaterial'
         ]);
 })();

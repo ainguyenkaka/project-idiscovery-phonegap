@@ -9,6 +9,7 @@ var concat = require('gulp-concat');
 var minifyCSS = require('gulp-minify-css');
 var deleteLines = require('gulp-delete-lines');
 var gulpSequence = require('gulp-sequence');
+var angularFilesort = require('gulp-angular-filesort');
 
 gulp.task('default', ['serve'], function () {
 
@@ -89,6 +90,9 @@ gulp.task('minify', function () {
 });
 
 gulp.task('copy:index', function () {
+    gulp.src('src/app/**/*.html')
+        .pipe(gulp.dest('www/app'));
+
     return gulp.src('src/index.html')
         .pipe(deleteLines({
             'filters': [
@@ -107,9 +111,7 @@ gulp.task('copy:index', function () {
 gulp.task('copy:minify', function () {
     var cssFiles = gulp.src('www/css/**/*.css');
 
-    var jsFiles = gulp.src('www/js/**/*.js', {
-        read: false,
-    });
+    var jsFiles = gulp.src(['www/js/**/*.js']).pipe(angularFilesort());
 
     return gulp.src('www/index.html')
         .pipe(inject(es.merge(
