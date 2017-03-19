@@ -11,9 +11,6 @@
         $stateProvider.state('home', {
             parent: 'app',
             url: '/',
-            data: {
-                authorities: []
-            },
             views: {
                 'content@': {
                     templateUrl: 'app/home/home.html',

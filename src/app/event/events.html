@@ -1,0 +1,45 @@
+<div layout="column" layout-padding layout-align="center center">
+    <div class="m-panel" md-whiteframe="1">
+        <div>
+            <table layout-fill>
+                <thead>
+                    <tr>
+                        <th>
+                            <md-button ui-sref="event.new" class="md-icon-button md-raised md-primary">
+                                <i class="material-icons">add</i>
+                            </md-button>
+                        </th>
+                        <th>Activity Name</th>
+                        <th>Reporter Name</th>
+                        <th hide-xs >Location</th>
+                        <th hide-xs hide-sm>Attending Time</th>
+                        <th hide-xs hide-sm>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="event in vm.events">
+                        <td>
+                            <div class="m-item-actions" layout="row" layout-align="start center">
+                                <md-button hide-xs hide-sm hide-md class="md-icon-button md-raised md-warn" ui-sref="event.delete(event.id)">
+                                    <i class="material-icons">delete</i>
+                                </md-button>
+                                <md-button hide-xs hide-sm hide-md class="md-icon-button md-raised md-primary" ui-sref="event.edit(event.id)">
+                                    <i class="material-icons">edit</i>
+                                </md-button>
+                                <md-button class="md-icon-button md-raised md-primary" ui-sref="event.detail(event.id)">
+                                    <i class="material-icons">remove_red_eye</i>
+                                </md-button>
+                            </div>
+                        </td>
+                        <td>{{event.activity_name}}</td>
+                        <td>{{event.reporter_name}}</td>
+                        <td hide-xs>{{event.activity_location}}</td>
+                        <td hide-xs hide-sm>{{event.attending_time | date:'HH:mm A'}}</td>
+                        <td hide-xs hide-sm>{{event.activity_date | date:'dd/MM/yyyy' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

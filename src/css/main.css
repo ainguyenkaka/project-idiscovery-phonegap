@@ -1,6 +1,39 @@
-body {
-  color: black;
+.m-error-bg {
+  background-color: red; }
+
+.m-warning-bg {
+  background-color: orange; }
+
+.m-toolbar {
+  background-color: #283593; }
+
+.white-color {
+  color: white; }
+
+.m-panel {
   background-color: white;
-  text-align: center; }
-  body a {
-    text-decoration: none; }
+  width: 100%; }
+
+md-input-container {
+  margin: 5px; }
+
+th,
+td {
+  text-align: left;
+  border-bottom: 1px solid #ddd; }
+
+tr:nth-child(even) {
+  background-color: #f2f2f2; }
+
+.white-bg {
+  background-color: white; }
+
+.m-timepicker {
+  padding-left: 12px; }
+  .m-timepicker md-input-container {
+    width: 38%;
+    margin: 15px; }
+
+@media only screen and (min-width: 600px) {
+  .m-panel {
+    width: 80%; } }

@@ -10,7 +10,14 @@
 
     function stateConfig($stateProvider) {
         $stateProvider.state('app', {
-            abstract: true
+            abstract: true,
+            views: {
+                'toolbar@': {
+                    templateUrl: 'app/layouts/toolbar/toolbar.html',
+                    controller: 'ToolbarController',
+                    controllerAs: 'vm'
+                }
+            }
         });
     }
 })();

@@ -3,7 +3,9 @@
 
     angular
         .module('iDiscoveryApp', [
+            'ngMaterial',
             'ui.router',
-            'ngMaterial'
+            'ngMessages',
+            'mdPickers'
         ]);
 })();
