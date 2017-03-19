@@ -10,6 +10,5 @@
     function EventDetailController($scope, $state, entity) {
         var vm = this;
         vm.event = entity;
-
     }
 })();

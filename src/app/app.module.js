@@ -7,5 +7,12 @@
             'ui.router',
             'ngMessages',
             'mdPickers'
-        ]);
+        ])
+        .run(run);
+
+    run.$inject = ['DatabaseService'];
+
+    function run(DatabaseService) {
+        DatabaseService.initialize();
+    }
 })();

@@ -86,12 +86,29 @@
                         .cancel('Cancel');
 
                     $mdDialog.show(confirm).then(function () {
-                        EventService.del({id: $stateParams.id});
-                        $state.go('event', null, {
-                            reload: 'event'
+                        EventService.del($stateParams.id).then(function () {
+                            $state.go('event', null, {
+                                reload: 'event'
+                            });
                         });
+
+                    }, function () {
+                        $state.go('^');
                     });
                 }]
+            })
+            .state('event.search', {
+                url: '/search/{text}',
+                views: {
+                    'content@': {
+                        templateUrl: 'app/event/event-search.html',
+                        controller: 'EventSearchController',
+                        controllerAs: 'vm'
+                    }
+                },
+                resolve: {
+                    
+                }
             });
     }
 })();

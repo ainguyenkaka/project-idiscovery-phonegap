@@ -20,13 +20,13 @@
                     <tr ng-repeat="event in vm.events">
                         <td>
                             <div class="m-item-actions" layout="row" layout-align="start center">
-                                <md-button hide-xs hide-sm hide-md class="md-icon-button md-raised md-warn" ui-sref="event.delete(event.id)">
+                                <md-button hide-xs hide-sm hide-md class="md-icon-button md-raised md-warn" ui-sref="event.delete({id: event.id})">
                                     <i class="material-icons">delete</i>
                                 </md-button>
-                                <md-button hide-xs hide-sm hide-md class="md-icon-button md-raised md-primary" ui-sref="event.edit(event.id)">
+                                <md-button hide-xs hide-sm hide-md class="md-icon-button md-raised md-primary" ui-sref="event.edit({id: event.id})">
                                     <i class="material-icons">edit</i>
                                 </md-button>
-                                <md-button class="md-icon-button md-raised md-primary" ui-sref="event.detail(event.id)">
+                                <md-button class="md-icon-button md-raised md-primary" ui-sref="event.detail({id: event.id})">
                                     <i class="material-icons">remove_red_eye</i>
                                 </md-button>
                             </div>
@@ -34,7 +34,7 @@
                         <td>{{event.activity_name}}</td>
                         <td>{{event.reporter_name}}</td>
                         <td hide-xs>{{event.activity_location}}</td>
-                        <td hide-xs hide-sm>{{event.attending_time | date:'HH:mm A'}}</td>
+                        <td hide-xs hide-sm>{{event.attending_time | date:'HH:mm a'}}</td>
                         <td hide-xs hide-sm>{{event.activity_date | date:'dd/MM/yyyy' }}</td>
                     </tr>
                 </tbody>

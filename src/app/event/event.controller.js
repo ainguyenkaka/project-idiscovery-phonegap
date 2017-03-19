@@ -10,7 +10,10 @@
     function EventController($scope, $state, EventService) {
         var vm = this;
 
-        vm.events = EventService.all();
-        
+        vm.events = [];
+
+        EventService.all().then(function (value) {
+            vm.events = value;
+        });
     }
 })();
