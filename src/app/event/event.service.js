@@ -12,7 +12,8 @@
             add: add,
             del: del,
             get: get,
-            update: update
+            update: update,
+            search: search
         };
         
         function all() {
@@ -33,6 +34,10 @@
 
         function del(id) {
             return EventTableService.del(id);
+        }
+
+        function search(field,text,startDate,endDate){
+            return EventTableService.search(field,text,startDate,endDate);
         }
 
         return instance;

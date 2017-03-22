@@ -4,9 +4,9 @@
         .module('iDiscoveryApp')
         .factory('DatabaseService', DatabaseService);
 
-    DatabaseService.$inject = ['$window', 'GeneratoreService'];
+    DatabaseService.$inject = ['$window', 'GeneratoreService','ConvertService'];
 
-    function DatabaseService($window, GeneratoreService) {
+    function DatabaseService($window, GeneratoreService,ConvertService) {
 
         var instance = {
             initialize: initialize,
@@ -16,8 +16,7 @@
         var database = null;
 
         function initialize() {
-            database = $window.openDatabase('idiscovery_db', '1.0', 'iDiscovery database', 2 * 1024 * 1024, firstCreate)
-
+            database = $window.openDatabase('idiscovery_db', '1.0', 'iDiscovery database', 2 * 1024 * 1024, firstCreate);
             function firstCreate() {
                 createTables(database);
             }
@@ -47,13 +46,13 @@
         function insertDefaultEvents(db) {
             var query = 'INSERT INTO event VALUES (?,?,?,?,?,?)';
             db.transaction(function (tx) {
-                var data = [GeneratoreService.generateID(), 'Running', 'BBC', '2016-08-12', '13 Street London', '2016-08-12 12:00'];
+                var data = [GeneratoreService.generateID(), 'Running', 'BBC', ConvertService.convertDateToString(new Date()),  '15 Street London', ConvertService.convertDateToString(new Date())];
                 tx.executeSql(query, data);
 
-                data = [GeneratoreService.generateID(), 'Eating', 'BBN', '2016-08-12', '15 Street London', '2016-08-12 13:00'];
+                data = [GeneratoreService.generateID(), 'Eating', 'BBN', ConvertService.convertDateToString(new Date()),  '10 Street London', ConvertService.convertDateToString(new Date())];
                 tx.executeSql(query, data);
 
-                data = [GeneratoreService.generateID(), 'Playing football', 'CNN', '2016-12-12', '21 Street London', '2016-08-12 13:00'];
+                data = [GeneratoreService.generateID(), 'Playing football', 'CNN', ConvertService.convertDateToString(new Date()), '21 Street London', ConvertService.convertDateToString(new Date())];
                 tx.executeSql(query, data);
             });
         }

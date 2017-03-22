@@ -56,6 +56,14 @@
                 resolve: {
                     entity: ['$stateParams', 'EventService', function ($stateParams, EventService) {
                         return EventService.get($stateParams.id);
+                    }],
+                    previousState: ["$state", function ($state) {
+                        var currentStateData = {
+                            name: $state.current.name || 'event',
+                            params: $state.params,
+                            url: $state.href($state.current.name, $state.params)
+                        };
+                        return currentStateData;
                     }]
                 }
             })
@@ -98,16 +106,13 @@
                 }]
             })
             .state('event.search', {
-                url: '/search/{text}',
+                url: '/search',
                 views: {
                     'content@': {
                         templateUrl: 'app/event/event-search.html',
                         controller: 'EventSearchController',
                         controllerAs: 'vm'
                     }
-                },
-                resolve: {
-                    
                 }
             });
     }
