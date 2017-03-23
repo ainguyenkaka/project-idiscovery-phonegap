@@ -1,5 +1,39 @@
 <div layout="column" layout-padding layout-align="center center">
     <div class="m-panel" md-whiteframe="1">
+        <div layout="row" layout-align="center center">
+            <form class="m-form" ng-submit="vm.search()">
+                <div layout-gt-sm="row">
+                    <div layout="row" layout-padding>
+                        <md-input-container>
+                            <md-icon aria-label="keyboard_arrow_down" class="material-icons">search
+                            </md-icon>
+                            <label>Searching text</label>
+                            <input type="text" name="name" ng-model="vm.text" />
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Search by</label>
+                            <md-select ng-model="vm.field">
+                                <md-option ng-repeat="item in vm.fields" ng-value="item.value">{{item.title}}</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                    <div layout="row" layout-align="center center">
+                        <md-input-container>
+                            <label>start</label>
+                            <md-datepicker ng-model="vm.startDate" name="startDate"></md-datepicker>
+                        </md-input-container>
+                        <md-input-container>
+                            <label>end</label>
+                            <md-datepicker ng-model="vm.endDate" name="endDate"></md-datepicker>
+                        </md-input-container>
+                    </div>
+                </div>
+                <div layout="row" layout-align="center center" >
+                    <button type="submit" class=" md-button md-raised md-primary">Search</button>
+                    <button type="button" class=" md-button md-raised" ng-click="vm.reset()">Reset</button>
+                </div>
+            </form>
+        </div>
         <div>
             <table layout-fill>
                 <thead>
@@ -11,7 +45,7 @@
                         </th>
                         <th>Activity Name</th>
                         <th>Reporter Name</th>
-                        <th hide-xs >Location</th>
+                        <th hide-xs>Location</th>
                         <th hide-xs hide-sm>Attending Time</th>
                         <th hide-xs hide-sm>Date</th>
                     </tr>
@@ -35,7 +69,7 @@
                         <td>{{event.reporter_name}}</td>
                         <td hide-xs>{{event.activity_location}}</td>
                         <td hide-xs hide-sm>{{event.attending_time | date:'HH:mm a'}}</td>
-                        <td hide-xs hide-sm>{{event.activity_date | date:'dd/MM/yyyy' }}</td>
+                        <td hide-xs hide-sm>{{event.activity_date | date:'MM/dd/yyyy' }}</td>
                     </tr>
                 </tbody>
             </table>

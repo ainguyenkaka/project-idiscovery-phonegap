@@ -19,26 +19,26 @@
             };
 
             function success(msg) {
-                 var style = '';
+                var style = '';
                 return show(msg, style);
             }
 
             function error(msg) {
-                 var style = 'm-error-bg';
+                var style = 'm-toast-error';
                 return show(msg, style);
             }
 
             function warning(msg) {
-                 var style = 'm-warning-bg';
+                var style = 'm-toast-warning';
                 return show(msg, style);
             }
 
 
-            function show(msg,style) {
+            function show(msg, style) {
                 $mdToast.show({
                     hideDelay: 3000,
                     toastClass: style,
-                    templateUrl: 'app/components/alert/alert.html',
+                    templateUrl: 'app/alert/alert.html',
                     controller: 'AlertController',
                     controllerAs: 'vm',
                     resolve: {

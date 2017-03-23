@@ -11,11 +11,11 @@
     function stateConfig($stateProvider) {
         $stateProvider
             .state('event', {
-                parent: 'app',
+                parent: 'user',
                 url: '/event',
                 views: {
                     'content@': {
-                        templateUrl: 'app/event/events.html',
+                        templateUrl: 'app/user/event/events.html',
                         controller: 'EventController',
                         controllerAs: 'vm'
                     }
@@ -25,7 +25,7 @@
                 url: '/new',
                 views: {
                     'content@': {
-                        templateUrl: 'app/event/event-addedit.html',
+                        templateUrl: 'app/user/event/event-addedit.html',
                         controller: 'EventAddEditController',
                         controllerAs: 'vm'
                     }
@@ -48,7 +48,7 @@
                 url: '/detail/{id}',
                 views: {
                     'content@': {
-                        templateUrl: 'app/event/event-detail.html',
+                        templateUrl: 'app/user/event/event-detail.html',
                         controller: 'EventDetailController',
                         controllerAs: 'vm'
                     }
@@ -56,14 +56,6 @@
                 resolve: {
                     entity: ['$stateParams', 'EventService', function ($stateParams, EventService) {
                         return EventService.get($stateParams.id);
-                    }],
-                    previousState: ["$state", function ($state) {
-                        var currentStateData = {
-                            name: $state.current.name || 'event',
-                            params: $state.params,
-                            url: $state.href($state.current.name, $state.params)
-                        };
-                        return currentStateData;
                     }]
                 }
             })
@@ -71,7 +63,7 @@
                 url: '/edit/{id}',
                 views: {
                     'content@': {
-                        templateUrl: 'app/event/event-addedit.html',
+                        templateUrl: 'app/user/event/event-addedit.html',
                         controller: 'EventAddEditController',
                         controllerAs: 'vm'
                     }
@@ -84,36 +76,34 @@
             })
             .state('event.delete', {
                 url: '/delete/{id}',
-                onEnter: ['$stateParams', '$state', '$mdDialog', 'EventService', function ($stateParams, $state, $mdDialog, EventService) {
-                    var confirm = $mdDialog.confirm()
-                        .title('You delete this event?')
-                        .textContent('This event and its details will be lost forever!')
-                        .ariaLabel('Lucky day')
-                        .targetEvent(null)
-                        .ok('Yes')
-                        .cancel('Cancel');
+                onEnter: ['$stateParams', '$state', '$mdDialog', 'EventService', 'ReportService', 'AlertService', function ($stateParams, $state, $mdDialog, EventService, ReportService, AlertService) {
+                    ReportService.isEventExisted($stateParams.id).then(function (value) {
+                        if (value) {
+                            AlertService.error("Event has the report!");
+                            return;
+                        } else {
+                            var confirm = $mdDialog.confirm()
+                                .title('You delete this event?')
+                                .textContent('This event and its details will be lost forever!')
+                                .ariaLabel('Lucky day')
+                                .ok('Yes')
+                                .cancel('Cancel');
 
-                    $mdDialog.show(confirm).then(function () {
-                        EventService.del($stateParams.id).then(function () {
-                            $state.go('event', null, {
-                                reload: 'event'
+                            $mdDialog.show(confirm).then(function () {
+                                EventService.del($stateParams.id).then(function () {
+                                    $state.go('event', null, {
+                                        reload: 'event'
+                                    });
+                                });
+
+                            }, function () {
+                                $state.go('event');
                             });
-                        });
-
-                    }, function () {
-                        $state.go('^');
+                        }
                     });
+
+
                 }]
-            })
-            .state('event.search', {
-                url: '/search',
-                views: {
-                    'content@': {
-                        templateUrl: 'app/event/event-search.html',
-                        controller: 'EventSearchController',
-                        controllerAs: 'vm'
-                    }
-                }
             });
     }
 })();

@@ -3,11 +3,11 @@
 
     angular
         .module('iDiscoveryApp')
-        .controller('EventSearchController', EventSearchController);
+        .controller('EventController', EventController);
 
-    EventSearchController.$inject = ['$scope', 'EventService', ];
+    EventController.$inject = ['$scope', '$state', 'EventService'];
 
-    function EventSearchController($scope, EventService) {
+    function EventController($scope, $state, EventService) {
         var vm = this;
 
         vm.field = 'activity_name';

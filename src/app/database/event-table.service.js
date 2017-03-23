@@ -87,7 +87,7 @@
             var promise = $q(function (resolve) {
                 var query = 'UPDATE event SET activity_name=?, reporter_name=?, activity_date=?, activity_location=?, attending_time=? WHERE id=?';
                 db.transaction(function (tx) {
-                    var data = [item.id, item.activity_name, item.reporter_name, ConvertService.convertDateToString(item.activity_date), item.activity_location, ConvertService.convertDateToString(item.attending_time)];
+                    var data = [item.activity_name, item.reporter_name, ConvertService.convertDateToString(item.activity_date), item.activity_location, ConvertService.convertDateToString(item.attending_time),item.id];
                     tx.executeSql(query, data, function () {
                         resolve(true);
                     });
@@ -106,7 +106,7 @@
                     query = "SELECT * FROM event WHERE " + field + " LIKE '%" + text + "%' and activity_date <= '" + ConvertService.convertDateToString(endDate) + "'";
                 if (startDate != null && endDate != null)
                     query = "SELECT * FROM event WHERE " + field + " LIKE '%" + text + "%' and activity_date between '" + ConvertService.convertDateToString(startDate) + "' and '"+ ConvertService.convertDateToString(endDate) + "'";
-console.log(query);
+                    
                 db.transaction(function (tx) {
                     tx.executeSql(query, [], function (tx, results) {
                         for (var i = 0; i < results.rows.length; i++) {

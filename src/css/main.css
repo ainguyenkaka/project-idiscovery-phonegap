@@ -1,7 +1,7 @@
-.m-error-bg {
-  background-color: red; }
+.m-toast-error .md-toast-content {
+  background-color: #FF5722; }
 
-.m-warning-bg {
+.m-toast-warning .md-toast-content {
   background-color: orange; }
 
 .m-toolbar {
@@ -31,7 +31,7 @@ tr:nth-child(even) {
 .m-timepicker {
   padding-left: 12px; }
   .m-timepicker md-input-container {
-    width: 38%;
+    width: 120px;
     margin: 15px; }
 
 @media only screen and (min-width: 600px) {
