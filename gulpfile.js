@@ -4,6 +4,7 @@ var inject = require('gulp-inject');
 var mainBowerFiles = require('main-bower-files');
 var es = require('event-stream');
 var minifyCSS = require('gulp-minify-css');
+var karma = require('karma').Server;
 
 gulp.task('default', ['serve'], function () {
 
@@ -51,4 +52,34 @@ gulp.task('sass:watch', function () {
 
 gulp.task('injection:watch', function () {
     gulp.watch('www/**/**', ['injection']);
+});
+
+
+// testing
+
+gulp.task('test:inject', function () {
+    return gulp.src('spec/karma.conf.js')
+        .pipe(inject(gulp.src(mainBowerFiles({
+            includeDev: true,
+            filter: ['**/*.js']
+        }), {
+            read: false
+        }), {
+            starttag: '// bower:js',
+            endtag: '// endbower',
+            transform: function (filepath) {
+
+                return '\'../' + filepath.substring(1, filepath.length) + '\',';
+            }
+        }))
+        .pipe(gulp.dest('spec/'));
+});
+
+gulp.task('test', ['test:inject'], function (done) {
+    karma.start({
+        configFile: __dirname + '/spec/karma.conf.js',
+        singleRun: true
+    }, function () {
+        done();
+    });
 });
