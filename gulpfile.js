@@ -58,7 +58,7 @@ gulp.task('injection:watch', function () {
 // testing
 
 gulp.task('test:inject', function () {
-    return gulp.src('spec/karma.conf.js')
+    return gulp.src('test/karma.conf.js')
         .pipe(inject(gulp.src(mainBowerFiles({
             includeDev: true,
             filter: ['**/*.js']
@@ -72,12 +72,12 @@ gulp.task('test:inject', function () {
                 return '\'../' + filepath.substring(1, filepath.length) + '\',';
             }
         }))
-        .pipe(gulp.dest('spec/'));
+        .pipe(gulp.dest('test/'));
 });
 
 gulp.task('test', ['test:inject'], function (done) {
     karma.start({
-        configFile: __dirname + '/spec/karma.conf.js',
+        configFile: __dirname + '/test/karma.conf.js',
         singleRun: true
     }, function () {
         done();

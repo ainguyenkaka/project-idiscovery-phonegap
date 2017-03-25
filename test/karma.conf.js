@@ -30,7 +30,7 @@ module.exports = function (config) {
             '../www/app/app.js',
             '../www/app/**/*.js',
             'app/helpers/module.js',
-            'app/**/*.spec.js'
+            'app/**/*.test.js'
         ],
         port: 9876,
         autoWatch: false,
