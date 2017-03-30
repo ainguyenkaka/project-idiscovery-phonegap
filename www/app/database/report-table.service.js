@@ -41,7 +41,8 @@
             var promise = $q(function (resolve) {
                 var query = 'INSERT INTO report(id,person_number,topic,description,event_id) VALUES (?,?,?,?,?)';
                 db.transaction(function (tx) {
-                    var data = [GeneratoreService.generateID(), item.person_number, item.topic, item.description, item.event_id];
+                    item.id = GeneratoreService.generateID();
+                    var data = [item, item.person_number, item.topic, item.description, item.event_id];
                     tx.executeSql(query, data, function () {
                         resolve(true);
                     });

@@ -1,5 +1,4 @@
 beforeEach(module('iDiscoveryApp'));
-
 function withMockedAngular(mockAngular, fn) {
     return function() {
         var _angular = window.angular;

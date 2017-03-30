@@ -29,16 +29,13 @@ module.exports = function (config) {
             '../www/app/app.state.js',
             '../www/app/app.js',
             '../www/app/**/*.js',
-            'app/helpers/module.js',
+            'helpers/module.js',
             'app/**/*.test.js'
         ],
         port: 9876,
         autoWatch: false,
         logLevel: config.LOG_INFO,
         singleRun: false,
-        browsers: ['PhantomJS'],
-        browserDisconnectTimeout: 10000, // default 2000
-        browserDisconnectTolerance: 1, // default 0
-        browserNoActivityTimeout: 4 * 60 * 1000 //default 10000
+        browsers: ['PhantomJS']
     });
 };

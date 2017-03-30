@@ -41,7 +41,8 @@
             var promise = $q(function (resolve) {
                 var query = 'INSERT INTO event(id,activity_name,reporter_name,activity_date,activity_location,attending_time) VALUES (?,?,?,?,?,?)';
                 db.transaction(function (tx) {
-                    var data = [GeneratoreService.generateID(), item.activity_name, item.reporter_name, ConvertService.convertDateToString(item.activity_date), item.activity_location, ConvertService.convertDateToString(item.attending_time)];
+                    item.id = GeneratoreService.generateID();
+                    var data = [item.id, item.activity_name, item.reporter_name, ConvertService.convertDateToString(item.activity_date), item.activity_location, ConvertService.convertDateToString(item.attending_time)];
                     tx.executeSql(query, data, function () {
                         resolve(true);
                     });
