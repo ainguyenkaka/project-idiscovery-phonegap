@@ -4,7 +4,7 @@ node_modules
 
 www/bower_components
 
+platforms
+
 plugins
 !plugins/**/*.json
-
-platforms

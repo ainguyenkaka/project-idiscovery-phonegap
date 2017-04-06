@@ -36,7 +36,7 @@
 
         function showDialog() {
             $mdDialog.show({
-                templateUrl: 'app/user/report/report-dialog.html',
+                templateUrl: 'report-dialog.html',
                 controller: 'ReportDialogController',
                 controllerAs: 'vm',
                 clickOutsideToClose: true,

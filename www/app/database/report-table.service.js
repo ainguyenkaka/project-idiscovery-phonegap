@@ -42,7 +42,7 @@
                 var query = 'INSERT INTO report(id,person_number,topic,description,event_id) VALUES (?,?,?,?,?)';
                 db.transaction(function (tx) {
                     item.id = GeneratoreService.generateID();
-                    var data = [item, item.person_number, item.topic, item.description, item.event_id];
+                    var data = [item.id, item.person_number, item.topic, item.description, item.event_id];
                     tx.executeSql(query, data, function () {
                         resolve(true);
                     });

@@ -257,34 +257,29 @@
     <script type="text/ng-template" id="event-dialog.html">
         <div layout-padding>
             <div layout-padding class="md-whiteframe-1dp">
-                <div layout-gt-xs="row">
-                    <div flex>
-                        <p>
-                            <span>Activity Name : </span>
-                            <b>{{vm.event.activity_name}}</b>
-                        </p>
-                        <p>
-                            <span>Reporter Name : </span>
-                            <b>{{vm.event.reporter_name}}</b>
-                        </p>
-                        <p>
-                            <span>Activity Location : </span>
-                            <b>{{vm.event.activity_location}}</b>
-                        </p>
-                    </div>
-                    <div flex>
+                <div>
+                    <p>
+                        <span>Activity Name : </span>
+                        <b>{{vm.event.activity_name}}</b>
+                    </p>
+                    <p>
+                        <span>Reporter Name: </span>
+                        <b>{{vm.event.reporter_name}}</b>
+                    </p>
+                    <p>
+                        <span>Activity Location : </span>
+                        <b>{{vm.event.activity_location}}</b>
+                    </p>
 
-                        <p>
-                            <span>Activity Date : </span>
-                            <b>{{vm.event.activity_date | date:'dd/MM/yyyy'}}</b>
-                        </p>
-                        <p>
-                            <span>Attending Time : </span>
-                            <b>{{vm.event.attending_time | date:'HH:mm a'}}</b>
-                        </p>
-                    </div>
+                    <p>
+                        <span>Activity Date : </span>
+                        <b>{{vm.event.activity_date | date:'dd/MM/yyyy'}}</b>
+                    </p>
+                    <p>
+                        <span>Attending Time : </span>
+                        <b>{{vm.event.attending_time | date:'HH:mm a'}}</b>
+                    </p>
                 </div>
-
                 <div layout="row">
                     <md-button ng-click="vm.save()" class="md-raised md-primary">Ok</md-button>
                     <span flex></span>
@@ -471,24 +466,19 @@
     <script type="text/ng-template" id="report-dialog.html">
         <div layout-padding>
             <div layout-padding class="md-whiteframe-1dp">
-                <div layout-gt-xs="row">
-                    <div flex>
-                        <p>
-                            <span>Person Number : </span>
-                            <b>{{vm.report.person_number}}</b>
-                        </p>
-                        <p>
-                            <span>Topic : </span>
-                            <b>{{vm.report.topic}}</b>
-                        </p>
-
-                    </div>
-                    <div flex>
-                        <p>
-                            <span>Description : </span>
-                            <b>{{vm.report.description}}</b>
-                        </p>
-                    </div>
+                <div>
+                    <p>
+                        <span>Person Number : </span>
+                        <b>{{vm.report.person_number}}</b>
+                    </p>
+                    <p>
+                        <span>Topic : </span>
+                        <b>{{vm.report.topic}}</b>
+                    </p>
+                    <p>
+                        <span>Description : </span>
+                        <b>{{vm.report.description}}</b>
+                    </p>
                 </div>
 
                 <div layout="row">
@@ -549,7 +539,7 @@
                                 <span>Description : </span>
                                 <b>{{vm.report.description}}</b>
                             </p>
-                             <md-button ng-show="{{!vm.isBroswer}}" class="md-raised md-primary" ng-click="vm.share()">Share</md-button>
+                            <md-button ng-show="{{!vm.isBroswer}}" class="md-raised md-primary" ng-click="vm.share()">Share</md-button>
                         </div>
                     </div>
                 </div>
@@ -575,6 +565,8 @@
 
     <script src="bower_components/ngCordova/dist/ng-cordova.js"></script>
 
+    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+
     <script src="bower_components/mdPickers/dist/mdPickers.min.js"></script>
 
     <!-- endinject -->
@@ -588,14 +580,14 @@
     <script src="app/alert/alert.controller.js"></script>
     <script src="app/alert/alert.service.js"></script>
     <script src="app/config/html5.mode.config.js"></script>
-    <script src="app/home/home.controller.js"></script>
-    <script src="app/home/home.state.js"></script>
     <script src="app/database/database.service.js"></script>
     <script src="app/database/event-table.service.js"></script>
     <script src="app/database/report-table.service.js"></script>
+    <script src="app/home/home.controller.js"></script>
+    <script src="app/home/home.state.js"></script>
+    <script src="app/user/user.state.js"></script>
     <script src="app/util/converter.service.js"></script>
     <script src="app/util/generator.service.js"></script>
-    <script src="app/user/user.state.js"></script>
     <script src="app/layouts/toolbar/toolbar.controller.js"></script>
     <script src="app/user/event/event-addedit.controller.js"></script>
     <script src="app/user/event/event-detail.controller.js"></script>

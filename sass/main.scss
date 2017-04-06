@@ -56,6 +56,13 @@ tr:nth-child(even) {
     }
 }
 
+.m-dialog {
+    width: 80%;
+    md-whiteframe-1dp {
+        width: 100%;
+    }
+}
+
 @media only screen and (min-width: 600px) {
     .m-panel {
         width: 80%;

@@ -19,7 +19,7 @@
 
         function showDialog() {
             $mdDialog.show({
-                templateUrl: 'app/user/event/event-dialog.html',
+                templateUrl: 'event-dialog.html',
                 controller: 'EventDialogController',
                 controllerAs: 'vm',
                 clickOutsideToClose: true,

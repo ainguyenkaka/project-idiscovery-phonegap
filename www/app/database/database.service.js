@@ -26,7 +26,7 @@
 
         function initializeForTests() {
             var dbName = (new Date()).getTime() + "_test_db";
-            db = openDatabase(dbName, "1.0", "Database for testing", 1, firstCreate);
+            db = openDatabase(dbName, "1.0", "Database for testing", 1024 * 1024, firstCreate);
             function firstCreate() {
                 createTables();
             }
